@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Form</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form name="form" action="/form" method="post" onsubmit="return (Validate());">
+
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="name" placeholder="Name" type="text">
+        </div>
+
+        <div class="form-group">
+            <select class="form-control" name="house" id="house">
+            <option selected disabled value="-1">House</option>
+            <option value="Gryffindor">Gryffindor</option>
+            <option value="Hufflepuff">Hufflepuff</option>
+            <option value="Ravenclaw">Ravenclaw</option>
+            <option value="Slytherin">Slytherin</option>
+            </select>
+        </div>
+        <div class="form-group">
+            
+            <div class="form-check">
+                <input class="form-check-input" id="Beater" name="position" type="radio" value="Beater">
+                <label class="form-check-label" for="Beater">
+                    Beater
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" id="Chaser" name="position" type="radio" value="Chaser">
+                <label class="form-check-label" for="Chaser">
+                    Chaser
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" id="Keeper" name="position" type="radio" value="Keeper">
+                <label class="form-check-label" for="Keeper">
+                    Keeper
+                </label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" id="Seeker" name="position" type="radio" value="Seeker">
+                <label class="form-check-label" for="Seeker">
+                    Seeker
+                </label>
+            </div>
+
+        </div>
+
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button class="btn btn-primary" type="submit" >Submit</button>
+
+    </form>
+
+   <script>
+
+        /* TODO */
+        function Validate() 
+        {
+         if (document.form.name.value=="")
+         {
+             alert ("You must specify your Name");
+             form.name.focus();
+             return (false);
+         }
+         if (document.form.house.value==-1)
+         {
+             alert("You must specify your House");
+             return (false);
+         }
+         
+        var pos = document.getElementsByName("position");
+        var formvalid = false;
+
+        for(var i=0; i<pos.length;i++)
+        {
+            if(pos[i].checked == true){
+                formvalid = true;    
+            }
+        }
+        if(!formvalid)
+        {
+            alert("You must specify your Position");
+            return false;
+        }
+
+        return true;
+        }
+            
+        
+
+    </script>
+
+{% endblock %}

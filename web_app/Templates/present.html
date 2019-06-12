@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <h1>Sheet</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>House</th>
+                <th>Position</th>
+            </tr>
+        </thead>
+        
+       <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student["name"] }}</td>
+                <td>{{ student["house"] }}</td>
+                <td>{{ student["position"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
